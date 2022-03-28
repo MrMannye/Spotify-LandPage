@@ -5,7 +5,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Header = () => {
     return (
-        <div className="flex shadow-sm items-center px-8 p-4  bg-black w-screen justify-between fixed top-0 z-10">
+        <div className="flex shadow-sm items-center px-8 p-4 bg-black w-screen justify-between fixed top-0 z-10">
             <div className="flex items-center space-x-4">
                 <p className="text-xl text-gray-400 font-semibold">Songs</p>
                 <p className="text-xl text-gray-400 ">|</p>

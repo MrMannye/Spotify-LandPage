@@ -1,5 +1,4 @@
 import Card from './Card'
-import Middle from './Middle'
 import RightBar from './RightBar'
 import World from './World'
 
