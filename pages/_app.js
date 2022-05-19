@@ -1,13 +1,18 @@
-import '../styles/globals.css'
-import Header from './components/Header';
+import Header from '../components/Header';
 import "tailwindcss/tailwind.css";
+import '../styles/global.css'
+import '../styles/home.scss'
+import SizeObserver from '../utils/size-observer'
+import ScrollObserver from '../utils/scroll-observer'
 
 function MyApp({ Component, pageProps }) {
   return(
-    <div className=''>
-      <Header />
-      <Component {...pageProps} />
-    </div>
+      <SizeObserver>
+        <ScrollObserver>
+          {/* <Header /> */}
+          <Component {...pageProps} />
+        </ScrollObserver>
+      </SizeObserver>
   )}
 
 export default MyApp

@@ -15,7 +15,7 @@ const Card = (props) => {
     balance = balance * 9.5;
 
     return (
-        <div className={`transform hover:scale-105 cursor-pointer transition delay-100 w-9/12  px-6 mb-4 py-4 shadow-xl rounded-xl bg-gradient-to-r ${Color[props.icon]}`} >
+        <div className={`hover:scale-105 cursor-pointer hover:opacity-80 transition w-9/12  px-6 mb-4 py-4 shadow-xl rounded-xl bg-gradient-to-r ${Color[props.icon]}`} >
             <div className="flex justify-between">
                 <div></div>
                 <div className=" w-10  h-10 flex items-center justify-center  bg-gray-300 rounded-xl m-1  bg-opacity-30">

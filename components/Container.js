@@ -4,7 +4,7 @@ import World from './World'
 
 const Container = () => {
     return (
-        <div className=" bg-whie p-8 w-full flex justify-between items-center bg-black" >
+        <div className=" bg-whie p-8 w-full flex justify-between items-center bg-white" >
             <div className="px-8 w-full flex flex-col mt-4">
                 <div className='my-6'>
                     <p className="text-gray-400 text-lg">
