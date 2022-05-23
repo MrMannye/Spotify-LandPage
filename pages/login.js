@@ -2,6 +2,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Axios from 'axios'
+
 
 export default function Login() {
     
@@ -9,7 +11,18 @@ export default function Login() {
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const onSubmit = (data) => { 
         console.log(data)
-        router.push('/')
+        Axios.post(`http://localhost:3001/users/loginUser`,{
+            email: data.email,
+            password: data.password,
+        }).then((response) => {
+            if(response.data === "Informacion invalida"){
+                alert("Usuario y/o contraseña incorrecta")
+            }else{
+                console.log(response)
+                alert("Usuario Logeado")
+                router.push('/')
+            }
+        })
     }
 
     return (

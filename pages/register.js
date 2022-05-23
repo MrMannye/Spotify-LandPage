@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Axios from 'axios'
 
 export default function Register() {
     
@@ -9,6 +10,16 @@ export default function Register() {
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const onSubmit = (data) => { 
         console.log(data)
+        Axios.post(`http://localhost:3001/users/addUser`,{
+            name: data.nombre,
+            lastname: data.apellido,
+            email: data.email,
+            password: data.password,
+        }).then((response) => {
+            console.log(response); 
+            alert("Usuario registrado correctamente")
+            router.push('/dashboard')
+        })
     }
 
     return (

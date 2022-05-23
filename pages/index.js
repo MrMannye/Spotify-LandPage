@@ -4,10 +4,11 @@ import Cat from '../components/Cat'
 import ClientLogos from '../components/client-logos'
 import Skills from '../components/skills'
 import AboutUs from '../components/aboutus'
+import Works from '../components/works'
 
 export default function Home() {
   return (
-    <div className='overflow-x-hidden bg-white w-full'>
+    <div className=' bg-white'>
       <Head>
         <title>Songs SEA</title>
       </Head>
@@ -39,6 +40,7 @@ export default function Home() {
 
       <Skills></Skills>
       <AboutUs></AboutUs>
+      <Works></Works>
 
     </div>
   )
