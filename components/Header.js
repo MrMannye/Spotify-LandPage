@@ -3,8 +3,13 @@ import CropLandscapeIcon from '@material-ui/icons/CropLandscape';
 import AppsIcon from '@material-ui/icons/Apps';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+    const user = useSelector((state) => state.login.user);
+    console.log(user)
+
     return (
         <div className="flex shadow-sm items-center px-8 p-4 bg-white w-screen justify-between fixed top-0 z-10">
             <div className="flex items-center space-x-4">
@@ -22,9 +27,15 @@ const Header = () => {
             <div className="flex space-x-4 text-gray-800">
                 <AppsIcon />
                 <ExitToAppIcon />
-                <Link href='/login'>
-                    <p className="text-gray-600 cursor-pointer font-semibold">Login</p>
-                </Link>
+                {user ? 
+                    <Link href='/dashboard'>
+                        <p className="text-gray-600 cursor-pointer font-semibold">{user}</p>
+                    </Link>
+                :
+                    <Link href='/login'>
+                        <p className="text-gray-600 cursor-pointer font-semibold">Login</p>
+                    </Link>
+                }
             </div>
         </div>
     )

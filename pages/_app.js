@@ -4,15 +4,27 @@ import '../styles/global.css'
 import '../styles/home.scss'
 import SizeObserver from '../utils/size-observer'
 import ScrollObserver from '../utils/scroll-observer'
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import loginReducer from '../hooks/loginSlice'
+
+const store = configureStore({
+  reducer: {
+    login: loginReducer,
+  },
+})
 
 function MyApp({ Component, pageProps }) {
-  return(
+  return (
+    <Provider store={store}>
       <SizeObserver>
         <ScrollObserver>
-          {/* <Header /> */}
           <Component {...pageProps} />
         </ScrollObserver>
       </SizeObserver>
-  )}
+    </Provider>
+
+  )
+}
 
 export default MyApp

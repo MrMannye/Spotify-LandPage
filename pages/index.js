@@ -5,6 +5,8 @@ import ClientLogos from '../components/client-logos'
 import Skills from '../components/skills'
 import AboutUs from '../components/aboutus'
 import Works from '../components/works'
+import React from 'react'
+import Header from '../components/Header'
 
 export default function Home() {
   return (
@@ -12,7 +14,7 @@ export default function Home() {
       <Head>
         <title>Songs SEA</title>
       </Head>
-
+      <Header />
       <div className="flex h-full" >
         <Container />
       </div>
@@ -45,5 +47,3 @@ export default function Home() {
     </div>
   )
 }
-
-

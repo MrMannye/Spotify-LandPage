@@ -26,7 +26,7 @@ const Container = () => {
             </div>
 
             <div className="flex items-center mt-6 mr-8 justify-center">
-                <World></World>
+                {/* <World></World> */}
             </div>
         </div>
     )

@@ -15,10 +15,15 @@ export default function Register() {
             lastname: data.apellido,
             email: data.email,
             password: data.password,
+            admin: 0
         }).then((response) => {
-            console.log(response); 
-            alert("Usuario registrado correctamente")
-            router.push('/dashboard')
+            if(response.data === "Usuario existente"){
+            console.log(response.data); 
+            alert(response.data)
+            }else{
+                alert("Usuario agregado correctamente")
+                router.push('/login')
+            }
         })
     }
 

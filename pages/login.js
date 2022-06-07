@@ -3,24 +3,33 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Axios from 'axios'
-
+import { useDispatch } from 'react-redux'
+import {signIn} from '../hooks/loginSlice'
 
 export default function Login() {
     
     const router = useRouter();
+    const dispatch = useDispatch();
+
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const onSubmit = (data) => { 
         console.log(data)
-        Axios.post(`http://localhost:3001/users/loginUser`,{
+        Axios.post(`http://localhost:3002/users/loginUser`,{
             email: data.email,
             password: data.password,
         }).then((response) => {
-            if(response.data === "Informacion invalida"){
+            console.log(response)
+            if(response.data === "Usuario no existente"){
                 alert("Usuario y/o contraseña incorrecta")
             }else{
                 console.log(response)
+                dispatch(signIn(response.data))
                 alert("Usuario Logeado")
-                router.push('/')
+                if(response.data.admin === 1){
+                    router.push('/')
+                }else{
+                    router.push('/musics')
+                }
             }
         })
     }
@@ -61,3 +70,4 @@ export default function Login() {
         </div>
     )
 }
+
