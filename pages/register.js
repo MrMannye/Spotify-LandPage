@@ -10,7 +10,7 @@ export default function Register() {
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const onSubmit = (data) => { 
         console.log(data)
-        Axios.post(`http://localhost:3001/users/addUser`,{
+        Axios.post(`https://backend-nest-bdd.herokuapp.com/users/addUser`,{
             name: data.nombre,
             lastname: data.apellido,
             email: data.email,

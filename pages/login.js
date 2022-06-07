@@ -14,7 +14,7 @@ export default function Login() {
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const onSubmit = (data) => { 
         console.log(data)
-        Axios.post(`http://localhost:3002/users/loginUser`,{
+        Axios.post(`https://backend-nest-bdd.herokuapp.com/users/loginUser`,{
             email: data.email,
             password: data.password,
         }).then((response) => {

@@ -10,7 +10,7 @@ export default function Song({ track_id, artist_name, track_name, _id }) {
 
     const number = 0;
     const handleAddSong = async () => {
-        Axios.post('http://localhost:3001/liked',{
+        Axios.post('https://backend-nest-bdd.herokuapp.com/liked',{
             idUser: '6293f2c3746d58900a759913',
             idSong: _id
         }).then(res => {
