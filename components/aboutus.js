@@ -6,21 +6,21 @@ const AboutUs = () => {
     const teams = [
         {
             id: 1,
-            name: "Janic",
+            name: "Miguel",
             link: "https://github.com/MrMannye",
             socialId: "@mannye"
         },
         {
             id: 2,
-            name: "Marc",
+            name: "Francisco",
             link: "https://github.com/MrMannye",
-            socialId: "@mannye"
+            socialId: "@franky"
         },
         {
             id: 3,
-            name: "Mo",
+            name: "Zuriel",
             link: "https://github.com/MrMannye",
-            socialId: "@mannye"
+            socialId: "@rexzu"
         },
         {
             id: 4,

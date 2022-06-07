@@ -26,7 +26,7 @@ export default function Login() {
                 dispatch(signIn(response.data))
                 alert("Usuario Logeado")
                 if(response.data.admin === 1){
-                    router.push('/')
+                    router.push('/dashboard')
                 }else{
                     router.push('/musics')
                 }

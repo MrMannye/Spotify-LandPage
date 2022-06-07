@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Playlists from '../components/Playlists'
+import Header from '../components/Header'
 import Songs from '../components/Songs'
 import Head from 'next/head'
 import { useSelector } from "react-redux";
@@ -22,7 +23,9 @@ function Musics() {
             <Head>
                 <title>Songs SEA</title>
             </Head>
-
+            <div className='mb-16'>
+                <Header/>
+            </div>
             <Playlists/>
             <Songs/>
             

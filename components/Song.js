@@ -21,7 +21,7 @@ export default function Song({ track_id, artist_name, track_name, _id }) {
     useEffect(async() => {
         Axios.get(`https://api.spotify.com/v1/tracks/${track_id}`, {
             headers: {
-                Authorization: `Bearer BQDLPbKNifUJYGTjV1l9RxPHUutrLIzaMFRy6kdyrKn-Q--SfDTwOfc6F9q85zgE-IPL5hWWZOEdZ6e7ByLc1E_Jj-y2VKai_wVX4ZnEDwmMmNHb7nbDSJUKjFPDX49KgLwP2_DElUqF0PESZGgn11fabwEptU8W-vBby8zOxAufJrWMqBpQewsvDZERTtzxVUEY`
+                Authorization: `Bearer BQC7vX6xRrDYsxmTFpswCCIlsytwGN1TKNplR6ixOF2r9YKvwPKWCOd-OzB5Gsa4Na5ynUfNdGuSz5_HCenjyLb3k5XKiUpAcl5W49c6vUewuv5BI0dWKk2h8kW1mVzkb-JOHMArQCtKRAKuQbLNOXsadmmoh3JMp44wPiApf-ZKPHMcfJv4g7gL1cz08s1V-tWH`
             }
         }).then(res => res.data.album.images[0].url)
         .then(response => {
