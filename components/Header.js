@@ -14,7 +14,6 @@ const Header = () => {
     const id = useSelector((state) => state.login.id);
     const router = useRouter();
     const dispatch = useDispatch();
-    console.log(user)
 
     const handleDashBoard = () => {
         if(!user){

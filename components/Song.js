@@ -3,15 +3,17 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Axios from 'axios'
 import Image from 'next/image'
+import { useSelector } from 'react-redux';
 
 export default function Song({ track_id, artist_name, track_name, _id }) {
     
     const [images, setImages] = useState(["https://i.scdn.co/image/ab67616d0000b273d4daf28d55fe4197ede848be"]);
+    const idUser = useSelector((state) => state.login.id);
 
     const number = 0;
     const handleAddSong = async () => {
         Axios.post('https://backend-nest-bdd.herokuapp.com/liked',{
-            idUser: '6293f2c3746d58900a759913',
+            idUser: idUser,
             idSong: _id
         }).then(res => {
             console.log(res)
@@ -21,7 +23,7 @@ export default function Song({ track_id, artist_name, track_name, _id }) {
     useEffect(async() => {
         Axios.get(`https://api.spotify.com/v1/tracks/${track_id}`, {
             headers: {
-                Authorization: `Bearer BQA_L3DaJXn4GAmcv-rTPm6wzRGBxAJIJGtzpoURD-KhDU59xx44Sf2i1AffygZOlv5u6L3eseFJCyP0-JwboAxvsCk7IJVjtt_Z39rQRoQJn5GZwZ0tfxhXhRWKwHBrFD9IaGOwyC3LEGLuEuK3N74dnw3rqdBBkFU`
+                Authorization: `Bearer BQB0emdi47D45-QOwz5e6OJ70SyOkO7BcSzBCyrDepFc_0scKiJ0PDTsRorIT50o215asQtEXeLxLWtr_WYJviqSqILGDfZ8zfnhP-7LXB5J5TaHalRZ0R_f0DD0-Hi0pPPd9PzGRImaamCv1SBROMzAksNwckFYUXCnKAfmIA5weXxWXszOoVAdTLWmvlrHAGP8wlqRs8FnbpMADuOJgITtMmbX-DJz15CbVr7EqwTsn1PGC60`
             }
         }).then(res => res.data.album.images[0].url)
         .then(response => {

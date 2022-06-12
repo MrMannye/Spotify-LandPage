@@ -1,32 +1,46 @@
 import Header from '../../components/Header'
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
-
+import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import Axios from 'axios'
 
 const Single = () => {
 
-    
-    console.log()
+    const [info, setInfo] = useState(null);
+    const [list, setList] = useState([]);
+    const router = useRouter();
+    const id = useSelector((state) => state.login.id)
+    const email = useSelector((state) => state.login.email)
+
+    useEffect(() => {
+        Axios.get(`https://backend-nest-bdd.herokuapp.com/users?email=${email}`)
+            .then(res => {
+                setInfo(res.data)
+            })
+    }, [email])
+
 
     return (
         <div className="single">
             <div className="singleContainer">
                 <Header></Header>
-                <div className="top">
+                <div className="top mt-12 shadow-lg">
                     <div className="left">
                         <div className="editButton">Edit</div>
                         <h1 className="title">Information</h1>
                         <div className="item">
                             <img
-                                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                                alt=""
+                                src="https://source.unsplash.com/random"
+                                alt="Image Avatar"
                                 className="itemImg"
                             />
                             <div className="details">
-                                <h1 className="itemTitle">Jane Doe</h1>
+                                <h1 className="itemTitle">{info?.name} {info?.lastname}</h1>
                                 <div className="detailItem">
                                     <span className="itemKey">Email:</span>
-                                    <span className="itemValue">janedoe@gmail.com</span>
+                                    <span className="itemValue">{info?.email}</span>
                                 </div>
                                 <div className="detailItem">
                                     <span className="itemKey">Phone:</span>
@@ -40,7 +54,7 @@ const Single = () => {
                                 </div>
                                 <div className="detailItem">
                                     <span className="itemKey">Country:</span>
-                                    <span className="itemValue">USA</span>
+                                    <span className="itemValue">MXN</span>
                                 </div>
                             </div>
                         </div>

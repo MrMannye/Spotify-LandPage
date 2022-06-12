@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    _id: "",
+    id: "",
     user: null,
-    admin: null
+    admin: null,
+    email: ""
 }
 
 export const loginSlice = createSlice({
@@ -13,12 +14,14 @@ export const loginSlice = createSlice({
         signIn: (state,action) => {
             state.user = action.payload.name,
             state.admin = action.payload.admin,
-            state._id = action.payload.id
+            state.email = action.payload.email
+            state.id = action.payload.id
         },
         signOut: (state) => {
             state.user = null,
             state.admin = 0,
-            state._id = null
+            state._id = "",
+            state.email = ""
         }
     }
 })

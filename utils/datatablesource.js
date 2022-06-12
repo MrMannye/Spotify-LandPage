@@ -1,14 +1,14 @@
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "_id", headerName: "ID", width: 70 },
   {
-    field: "user",
+    field: "name",
     headerName: "User",
     width: 230,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          <img className="cellImg" src="https://source.unsplash.com/random" alt="avatar" />
+          {params.row.name}
         </div>
       );
     },
@@ -17,21 +17,28 @@ export const userColumns = [
     field: "email",
     headerName: "Email",
     width: 230,
+    renderCell: (params) => {
+      return (
+        <p className={`truncate w-48`}>
+          {params.row.email}
+        </p>
+      );
+    },
   },
 
   {
-    field: "age",
-    headerName: "Age",
+    field: "lastname",
+    headerName: "LastName",
     width: 100,
   },
   {
-    field: "status",
+    field: "admin",
     headerName: "Status",
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
+        <div className={`cellWithStatus active`}>
+          active
         </div>
       );
     },

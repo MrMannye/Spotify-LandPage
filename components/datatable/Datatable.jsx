@@ -2,13 +2,23 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../utils/datatablesource";
 import { useState } from "react";
 import Link from 'next/link'
+import { useEffect } from "react";
+import Axios from 'axios'
 
 const Datatable = () => {
   const [data, setData] = useState(userRows);
+  const [users, setUsers] = useState(null);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  useEffect(() => {
+    Axios.get("https://backend-nest-bdd.herokuapp.com/users")
+    .then(response => {
+      console.log(response.data);
+      setUsers(response.data)
+    })
+  },[])
+
+
+  
 
   const actionColumn = [
     {
@@ -18,12 +28,12 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link href="/users/test">
+            <Link href={`/users/${params.row._id}`}>
               <div className="viewButton">View</div>
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={""}
             >
               Delete
             </div>
@@ -34,18 +44,14 @@ const Datatable = () => {
   ];
   return (
     <div className="datatable">
-      <div className="datatableTitle">
-        Add New User
-        <Link href="/users/new" className="link">
-          Add New
-        </Link>
-      </div>
+
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={users}
+        getRowId={(users) => users._id}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
-        rowsPerPageOptions={[9]}
+        rowsPerPageOptions={[10]}
         checkboxSelection
       />
     </div>
